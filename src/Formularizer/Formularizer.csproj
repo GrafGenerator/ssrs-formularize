@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23303712-E2D6-4D54-8B6A-1D186E01AD3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Formularizer</RootNamespace>
+    <AssemblyName>FormularizerRe</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\packages\DocumentFormat.OpenXmlSDK.2.0\lib\Net35\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.ExcelRendering, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSRS12.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.ReportingServices.ExcelRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.Interfaces, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSRS12.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.ReportingServices.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.ProcessingCore, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSRS12.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.ReportingServices.ProcessingCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Common\Constants.cs" />
+    <Compile Include="Core\Common\DocumentInfo.cs" />
+    <Compile Include="Core\Common\FormulaInfo.cs" />
+    <Compile Include="Core\Common\DocumentInfoExtensions.cs" />
+    <Compile Include="Core\Common\SheetInfo.cs" />
+    <Compile Include="Core\Common\Utility.cs" />
+    <Compile Include="Core\FormulaBuilder\DocumentDefinitionBuilder.cs" />
+    <Compile Include="Core\FormulaBuilder\FormulaDefinitionBuilder.cs" />
+    <Compile Include="Core\FormulaBuilder\FormulaSignatureMatchingFactory.cs" />
+    <Compile Include="Core\FormulaCompiler\ColumnCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\CellsCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\CellCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\ContainerCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\FormulaCompiler.cs" />
+    <Compile Include="Core\FormulaCompiler\FormulaCompilersFactory.cs" />
+    <Compile Include="Core\FormulaCompiler\ICompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\ICompilerStrategy.cs" />
+    <Compile Include="Core\FormulaCompiler\IdentityCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\SelfReferenceCompiledFormula.cs" />
+    <Compile Include="Core\FormulaCompiler\SheetContext.cs" />
+    <Compile Include="Core\FormulaCompiler\SheetResolvingContext.cs" />
+    <Compile Include="Core\FormulaCompiler\StaticTextCompiledFormula.cs" />
+    <Compile Include="Core\FormulaDefinition\CellCommandDef.cs" />
+    <Compile Include="Core\FormulaDefinition\CellsCommandDef.cs" />
+    <Compile Include="Core\FormulaDefinition\ColumnCommandDef.cs" />
+    <Compile Include="Core\FormulaDefinition\SelectorCommandDef.cs" />
+    <Compile Include="Core\FormulaDefinition\FormulaDef.cs" />
+    <Compile Include="Core\FormulaDefinition\IdentityDef.cs" />
+    <Compile Include="Core\FormulaDefinition\IFormulaPartDef.cs" />
+    <Compile Include="Core\FormulaDefinition\SelfReferenceCommandDef.cs" />
+    <Compile Include="Core\FormulaDefinition\StaticTextDef.cs" />
+    <Compile Include="Core\HyperlinkAnalyze\HyperlinkAnalyzer.cs" />
+    <Compile Include="FormularizerRE.cs" />
+    <Compile Include="ManuallyClosableMemoryStream.cs" />
+    <Compile Include="Core\Formularizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\FunctionalExtensions.csproj">
+      <Project>{2a7e366b-d6f7-4567-962b-352b32c8e519}</Project>
+      <Name>FunctionalExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
