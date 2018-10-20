@@ -109,7 +109,7 @@ There basically three types of references resolving:
 
 `static-text` = any text except curly braces
 
-`reference-spec` = {`reference-type` '`anchor`' [`reference-scope` [`sheet-name`] ]}
+`reference-spec` = {`reference-type` '`anchor`' [`reference-scope` ['`sheet-name`'] ]}
 
 `reference-type` = `cell` | `cells` | `column`
 
@@ -124,41 +124,41 @@ There basically three types of references resolving:
 Different cases for formulas:
 * `cell 'id'` - compiles to address of first cell found with this identifier
   * `cell 'id' column` - search first cell with identifier in the same column as the current cell
-	* `cell 'id' row` - search first cell with identifier in the same row as the current cell
-	* `cell 'id' all` - search first cell with identifier in the same sheet as the current cell
-	* `cell 'id' column|row|all 'sheet1'` - search first cell with identifier in the same column|row as current cell  or in whole sheet (`all`), named `sheet1` (sheet address generated too)
+  * `cell 'id' row` - search first cell with identifier in the same row as the current cell
+  * `cell 'id' all` - search first cell with identifier in the same sheet as the current cell
+  * `cell 'id' column|row|all 'sheet1'` - search first cell with identifier in the same column|row as current cell  or in whole sheet (`all`), named `sheet1` (sheet address generated too)
 
 * `cells 'id'` - compiles to comma-separated list of cell addresses found with this identifier
   * `cells 'id' column` - search all cells with identifier in the same column as the current cell
-	* `cells 'id' row` - search all cells with identifier in the same row as the current cell
-	* `cells 'id' all` - search all cells with identifier in the same sheet as the current cell
-	* `cells 'id' column|row|all 'sheet1'` - search all cells with identifier in the same column|row as current cell  or in whole sheet (`all`), named `sheet1` (sheet address generated too)
+  * `cells 'id' row` - search all cells with identifier in the same row as the current cell
+  * `cells 'id' all` - search all cells with identifier in the same sheet as the current cell
+  * `cells 'id' column|row|all 'sheet1'` - search all cells with identifier in the same column|row as current cell  or in whole sheet (`all`), named `sheet1` (sheet address generated too)
 
 * `column 'id'` - compiles to address of column range, containing first cell found with this identifier (f.e., if cell is D4, column range is D:D)
   * `column 'id'` - search first cell with identifier and return column range for it
-	* `column 'id' 'sheet1'` - search first cell with identifier on sheet named `sheet1` and return column range for it (sheet address generated too)
+  * `column 'id' 'sheet1'` - search first cell with identifier on sheet named `sheet1` and return column range for it (sheet address generated too)
 
 ### Usage examples
 * Generate IF formula according to value of cell in the same row
   * Report items are textboxes txtA, txtB and txtC in table row.
-	* txtA has anchor `comp_value`.
-	* txtB has anchor `output_value`.
-	* txtC has formula `IF({cell 'comp_value' row} > 0, {cell 'output_value' row}, "N/A")`.
-	* Result is formula `IF(A1 > 0, B1, "N/A")` for first row, row numbers 2 for second row, 3 for third and so on.
-	* The same is for `column` and `all` scopes.
+  * txtA has anchor `comp_value`.
+  * txtB has anchor `output_value`.
+  * txtC has formula `IF({cell 'comp_value' row} > 0, {cell 'output_value' row}, "N/A")`.
+  * Result is formula `IF(A1 > 0, B1, "N/A")` for first row, row numbers 2 for second row, 3 for third and so on.
+  * The same is for `column` and `all` scopes.
 
 * Generate SUM formula for few cells in the same row
   * Report items are textboxes txtA, txtB, txtC, txtD in table row.
-	* txtA, txtB, txtC have anchors `sum_value`.
-	* txtD has formula `SUM({cells 'sum_value' row})`.
-	* Result is formula `SUM(A1, B1, C1)` for first row, row numbers 2 for second row, 3 for third and so on.
-	* The same is for `column` and `all` scopes.
+  * txtA, txtB, txtC have anchors `sum_value`.
+  * txtD has formula `SUM({cells 'sum_value' row})`.
+  * Result is formula `SUM(A1, B1, C1)` for first row, row numbers 2 for second row, 3 for third and so on.
+  * The same is for `column` and `all` scopes.
 
 * Generate SUM formula for cells column range
   * Report items are textboxes txtA in table row and separate textbox txtR.
-	* txtA has anchor `column_value`.
-	* txtR has formula `SUM({column 'column_value'})`.
-	* Result is formula `SUM(A:A)`.
+  * txtA has anchor `column_value`.
+  * txtR has formula `SUM({column 'column_value'})`.
+  * Result is formula `SUM(A:A)`.
 
 If add sheet part of formula, then cells on another sheet will be searched and references to them returned.
 
