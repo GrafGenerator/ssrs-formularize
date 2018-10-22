@@ -4,7 +4,7 @@ Public Shared Function EncodeFormula(ByVal id As String, ByVal formula As String
     Const formularizerPrefix = "formularizer://localhost/?f="
      
     If Not String.IsNullOrEmpty(id) Then
-        idPart = "{id=" &amp; id &amp; "}"
+        idPart = "{id=" & id & "}"
     Else
         idPart = ""
     End If
@@ -14,7 +14,7 @@ Public Shared Function EncodeFormula(ByVal id As String, ByVal formula As String
         formulaPart = ""
     End If
     Dim bytes As Byte()
-    bytes = System.Text.Encoding.UTF8.GetBytes(idPart &amp; formulaPart)
+    bytes = System.Text.Encoding.UTF8.GetBytes(idPart & formulaPart)
     Dim encoded = System.Convert.ToBase64String(bytes).TrimEnd("=").Replace("+", "-").Replace("/", "_")
      
     Dim finalUrl = formularizerPrefix + encoded
